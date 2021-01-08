@@ -1,5 +1,6 @@
 const products = require('../data/products.json')
 const {v4:uuidv4} = require('uuid')
+const Utils = require('../utils')
 
 
 const findAll = () => {
@@ -24,13 +25,14 @@ const findById = id => {
 
 const create = product => {
 
-    return new Promise((promise, resolve) => {
+    return new Promise((resolve, reject) => {
 
         const newProduct = {id:uuidv4(),...product}
         products.push(newProduct)
+        Utils.passDataToFile('./data/products.json', products)
+        resolve(newProduct)
         
     })
-
 
 }
 

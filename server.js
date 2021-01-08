@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
 
     else if(req.url  === '/api/products' && req.method === 'POST'){
 
-        createProduct(req, res)
+        ProductController.createProduct(req, res)
 
     }
 
