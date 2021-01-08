@@ -1,7 +1,6 @@
 const products = require('../data/products.json')
 const {v4:uuidv4} = require('uuid')
-const Utils = require('../utils')
-
+const {passDataToFile} = require('../utils')
 
 const findAll = () => {
 
@@ -29,9 +28,22 @@ const create = product => {
 
         const newProduct = {id:uuidv4(),...product}
         products.push(newProduct)
-        Utils.passDataToFile('./data/products.json', products)
+        passDataToFile('./data/products.json', products)
         resolve(newProduct)
         
+    })
+
+}
+
+const update = (id, product) => {
+
+    return new Promise((resolve, reject) =>{
+
+        const index = products.findIndex(p => p.id === id)
+        products[index] = {id, ...product}
+        passDataToFile('./data/products.json', products)
+        resolve(products[index])
+
     })
 
 }
@@ -41,5 +53,6 @@ module.exports = {
     findAll,
     findById,
     create,
+    update,
 
 }
