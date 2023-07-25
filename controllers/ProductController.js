@@ -1,7 +1,7 @@
 import {findAll, findById, create, update, remove} from '../models/Product.js'
 import {getPostRequest} from '../utils.js'
 
-async function getProducts(req, res){
+const getProducts = async(req, res) => {
 
     try{
 
@@ -18,7 +18,7 @@ async function getProducts(req, res){
 
 }
 
-async function getProduct(req, res, id){
+const getProduct = async(req, res, id) => {
 
     try{
 
@@ -48,7 +48,7 @@ async function getProduct(req, res, id){
 }
 
 
-async function createProduct(req, res){
+const createProduct = async(req, res) => {
 
     try{
         
@@ -79,7 +79,7 @@ async function createProduct(req, res){
 
 }
 
-async function updateProduct(req, res, id){
+const updateProduct = async(req, res, id) => {
 
     try{
 
@@ -123,7 +123,7 @@ async function updateProduct(req, res, id){
 
 }
 
-async function deleteProduct(req, res, id){
+const deleteProduct = async(req, res, id) => {
 
     const product = findById(id);
 
