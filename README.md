@@ -1,16 +1,44 @@
-# Rest API CRUD without framework
+# Products API
 
+Products API enables product management, built using Node.js, 
+
+#
+
+## Installation
+
+```bash
+  npm install
+  npm start
 ```
-# Uso
-npm install
-yarn install
+    
+## API Reference
 
+#### Create Product
 
-# Rotas
-GET      /api/products
-POST     /api/products
-GET      /api/products/:id
-PUT      /api/products/:id
-DELETE   /api/products/:id
+```http
+  POST /api/products
+```
 
+#### Get all Products
+
+```http
+  GET /api/products/
+```
+
+#### Get Product
+
+```http
+  GET /api/products/:id
+```
+
+#### Edit Product
+
+```http
+  PUT /api/products/:id
+```
+
+#### Delete Product
+
+```http
+  DELETE /api/products/:id
 ```
