@@ -1,6 +1,6 @@
-let products = require('../data/products.json')
-const {v4:uuidv4} = require('uuid')
-const {passDataToFile} = require('../utils')
+import products from '../data/products.json' assert {type: 'json'}
+import {v4 as uuidv4} from 'uuid'
+import {passDataToFile} from '../utils.js'
 
 const findAll = () => {
 
@@ -62,7 +62,7 @@ const remove = id =>{
 
 }
 
-module.exports = {
+export {
 
     findAll,
     findById,

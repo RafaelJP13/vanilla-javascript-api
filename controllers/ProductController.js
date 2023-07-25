@@ -1,11 +1,11 @@
-const Product = require('../models/Product')
-const {getPostRequest} = require('../utils')
+import {findAll, findById, create, update, remove} from '../models/Product.js'
+import {getPostRequest} from '../utils.js'
 
 async function getProducts(req, res){
 
     try{
 
-        const products = await Product.findAll()
+        const products = await findAll()
 
         res.writeHead(200, {'Content-Type': 'application/json'})                                                                                                                                                                             
         res.end(JSON.stringify(products))
@@ -22,7 +22,7 @@ async function getProduct(req, res, id){
 
     try{
 
-        const product = await Product.findById(id)
+        const product = await findById(id)
 
         if(!product){
 
@@ -64,7 +64,7 @@ async function createProduct(req, res){
 
         }
 
-        const newProduct = await Product.create(product)
+        const newProduct = await create(product)
         res.writeHead(201, {'Content-Type':'application/json'})
         return res.end(JSON.stringify(newProduct))
 
@@ -83,7 +83,7 @@ async function updateProduct(req, res, id){
 
     try{
 
-        const product = await Product.findById(id);
+        const product = await findById(id);
 
         if(!product){
 
@@ -106,7 +106,7 @@ async function updateProduct(req, res, id){
 
             }
 
-            const updateProduct = await Product.update(id, productData) 
+            const updateProduct = await update(id, productData) 
 
             res.writeHead(200, {'Content-Type': 'application/json'})
             return res.end(JSON.stringify(updateProduct))
@@ -125,7 +125,7 @@ async function updateProduct(req, res, id){
 
 async function deleteProduct(req, res, id){
 
-    const product = Product.findById(id);
+    const product = findById(id);
 
     if(!product){
 
@@ -136,7 +136,7 @@ async function deleteProduct(req, res, id){
 
     else{
 
-        await Product.remove(id)
+        await remove(id)
         res.writeHead(200, {'Content-Type': 'application/json'})
         res.end(JSON.stringify({message:`Product ${id} removed!`}))
 
@@ -144,11 +144,10 @@ async function deleteProduct(req, res, id){
 
 }
 
-module.exports = {
-
+export {
     getProducts,
     getProduct,
     createProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
 }

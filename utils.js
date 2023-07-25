@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from 'fs'
 
 const passDataToFile = (filename, content) => {
 
@@ -43,7 +43,7 @@ const getPostRequest = req => {
 
 }
 
-module.exports = {
+export {
 
     passDataToFile,
     getPostRequest,

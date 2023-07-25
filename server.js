@@ -1,5 +1,6 @@
-const http = require('http')
-const {getProducts, getProduct, createProduct, updateProduct, deleteProduct} = require('./controllers/ProductController')
+import http from 'http'
+
+import {getProducts, getProduct, createProduct, updateProduct, deleteProduct} from './controllers/ProductController.js'
 
 const server = http.createServer((req, res) => {
 
